@@ -140,18 +140,25 @@ $(document).ready(function() {
         $(this).attr('name', convertToSlug(attrText));
     });
 
-    // Instagram Feed
+       // Instagram Feed
 
-    jQuery.fn.spectragram.accessData = {
-        accessToken: '1406933036.fedaafa.feec3d50f5194ce5b705a1f11a107e0b',
-        clientID: 'fedaafacf224447e8aef74872d3820a1'
-    };
-
-    $('.instafeed').each(function() {
-        $(this).children('ul').spectragram('getRecentTagged', {
-            query: $(this).attr('data-query')
+    var Spectra = {
+        instaToken: '3031884223.d5d7ee0.652a9f17bec446c4a715599e59d8f93d',
+        instaID: 'd5d7ee0fe7664fda8eaa1f8dda6f8884',
+      init: function () {
+        $.fn.spectragram.accessData = {
+          accessToken: this.instaToken,
+          clientID: this.instaID
+        };
+        $('.instafeed').spectragram('getUserFeed',{
+          max: 12,
+          query: 'casamentoyaerafa',
+          wrapEachWith: '<div>'
         });
-    });
+      }
+    }
+
+    Spectra.init();
 
     // Contact form code
 
